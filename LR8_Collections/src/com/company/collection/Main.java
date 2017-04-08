@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
         MyCompany myCompany = new MyCompany();
         myCompany.addEmployee("Serj", 25, "Hillel");
@@ -16,16 +17,15 @@ public class Main {
         // show all of employees
         System.out.println("All of employees:");
         for (Employee currentEmployee : myCompany.getAllEmployees()) {
-            System.out.println(currentEmployee.getName());
+            System.out.println(currentEmployee.getName()+ " " + currentEmployee.getProjectName());
         }
 
         // delete employee
-        Scanner scDel = new Scanner(System.in);
         System.out.println("Do you want delete Employee? y/n:");
-        String userInputDelete = scDel.nextLine();
+        String userInputDelete = scanner.nextLine();
         if("y".equals(userInputDelete)) {
             System.out.println("Input name of Employee:");
-            String inputName = scDel.nextLine();
+            String inputName = scanner.nextLine();
             myCompany.deleteEmployeeByName(inputName);
             System.out.println();
             System.out.println("After deleted " + inputName);
@@ -38,15 +38,14 @@ public class Main {
 
         //add employee
         System.out.println("Do you want add employee? y/n:");
-        Scanner scAdd = new Scanner(System.in);
-        String userInputAdd = scAdd.nextLine();
+        String userInputAdd = scanner.nextLine();
         if("y".equals(userInputAdd)) {
             System.out.println("Please, input name:");
-            String nameAdd = scAdd.nextLine();
+            String nameAdd = scanner.nextLine();
             System.out.println("Please, input age:");
-            int ageAdd = Integer.valueOf(scAdd.nextLine());
+            int ageAdd = Integer.valueOf(scanner.nextLine());
             System.out.println("Please, input project:");
-            String projectAdd = scAdd.nextLine();
+            String projectAdd = scanner.nextLine();
             myCompany.addEmployee(nameAdd, ageAdd, projectAdd);
             for (Employee currentEmployee : myCompany.getAllEmployees()) {
                 System.out.println(currentEmployee.getName());
@@ -57,17 +56,13 @@ public class Main {
 
         //edit employee
             //update employee name
-
-//        System.out.println(myCompany.getEmployeeByName("Test Name").getName());
-
         System.out.println("Do you want update employee name? y/n");
-        Scanner scUpd = new Scanner(System.in);
-        String userInputUpd = scUpd.nextLine();
+        String userInputUpd = scanner.nextLine();
         if("y".equals(userInputUpd)) {
             System.out.println("Please, input name:");
-            String nameUpd = scUpd.nextLine();
+            String nameUpd = scanner.nextLine();
             System.out.println("Please, input new name:");
-            String nameNewUpd = scUpd.nextLine();
+            String nameNewUpd = scanner.nextLine();
             myCompany.updateEmployeeName(nameUpd, nameNewUpd);
             for (Employee currentEmployee : myCompany.getAllEmployees()) {
                 System.out.println(currentEmployee.getName());
@@ -78,13 +73,12 @@ public class Main {
 
            //set project name
         System.out.println("Do you want set project name? y/n");
-        Scanner scSetProjectName = new Scanner(System.in);
-        String userInputSetProjName = scSetProjectName.nextLine();
+        String userInputSetProjName = scanner.nextLine();
         if("y".equals(userInputSetProjName)) {
             System.out.println("Please, input name:");
-            String nameSetProjectName = scSetProjectName.nextLine();
+            String nameSetProjectName = scanner.nextLine();
             System.out.println("Please, input project:");
-            String projectSetName = scSetProjectName.nextLine();
+            String projectSetName = scanner.nextLine();
         myCompany.editEmployeeProjectName(nameSetProjectName, projectSetName);
         System.out.println(myCompany.getEmployeeByName(nameSetProjectName).getName() + " "
                + myCompany.getEmployeeByName(nameSetProjectName).getProjectName());
@@ -94,39 +88,18 @@ public class Main {
 
           //clear project name
         System.out.println("Do you want clear project?y/n");
-        Scanner scClearProject = new Scanner(System.in);
-        String userInputClearProject = scClearProject.nextLine();
+        String userInputClearProject = scanner.nextLine();
 
         if("y".equals(userInputClearProject)){
             System.out.println("Please, input name:");
-            String nameEmployeeClearProject = scClearProject.nextLine();
-
+            String nameEmployeeClearProject = scanner.nextLine();
             System.out.println("Please, input project:");
-            String projectClearProject = scClearProject.nextLine();
-
+            String projectClearProject = scanner.nextLine();
             myCompany.clearEmployeeProjectName(nameEmployeeClearProject, projectClearProject);
-
-            System.out.println(myCompany.getEmployeeByName(nameEmployeeClearProject).getName());
-
-//            System.out.println(myCompany.getEmployeeByName(nameClearProject).getName() + " "
-//                    + myCompany.getEmployeeByName(nameClearProject).getProjectName());
+            System.out.println(myCompany.getEmployeeByName(nameEmployeeClearProject).getName() + " "
+                   + myCompany.getEmployeeByName(nameEmployeeClearProject).getProjectName());
         } else if ("n".equals(userInputClearProject)){
             System.out.println("Project not cleared");
         }
-
     }
-
-
-    //        new Employee();
-//        new Employee("", 20, "");
-
-//        ArrayList<Object> listOfObjects = new ArrayList<Object>();
-//        listOfObjects.add("Test");
-//        listOfObjects.add(new Employee());
-
-//        ArrayList<Employee> employeeList = new ArrayList<Employee>();
-//        employeeList.add(new Employee("Serj", 25, "Hillel"));
-//        employeeList.add(new Employee("Alex", 30, "Electric Cloud"));
-//        employeeList.add(new Employee("Serj", 45, "Sigma"));
-
 }
